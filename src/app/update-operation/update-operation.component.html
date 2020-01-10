@@ -1,0 +1,57 @@
+<div align="center">
+    <div>
+        <form [formGroup]="operationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputPatient">Patient :</label>
+                <select class="form-control" id="inputPatient" [(ngModel)]="patientcourant.id" formControlName="patient"
+                    [ngClass]="{'is-invalid': submitted && f.patient.errors}">
+                    <option *ngFor="let patient of listPatient" [ngValue]="patient.id">
+                        {{patient.nom + " " + patient.prenom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.patient.errors">
+                <label class="error">Veuillez sélectionner le patient opéré'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputMedecin">Médecin :</label>
+                <select class="form-control" id="inputMedecin" [(ngModel)]="medecincourant.id" formControlName="medecin"
+                    [ngClass]="{'is-invalid': submitted && f.medecin.errors}">
+                    <option *ngFor="let medecin of listMedecin" [ngValue]="medecin.id">
+                        {{medecin.nom + " " + medecin.prenom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.medecin.errors">
+                <label class="error">Veuillez sélectionner le médecin qui opère'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputSalle">Salle :</label>
+                <select class="form-control" id="inputSalle" [(ngModel)]="sallecourant.id" formControlName="salle"
+                    [ngClass]="{'is-invalid': submitted && f.salle.errors}">
+                    <option *ngFor="let salle of listSalle" [ngValue]="salle.id">
+                        {{salle.type}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.salle.errors">
+                <label class="error">Veuillez sélectionner la salle de l'opération'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="date-picker-example" class="formu">Date :</label>
+                <input type="date" class="form-control datepicker" id="date-picker-example"
+                    [(ngModel)]="operationcourant.date" formControlName="date"
+                    [ngClass]="{'is-invalid': submitted && f.date.errors}">
+            </div>
+            <div *ngIf="submitted && f.date.errors">
+                <label class="error">Veuillez entrer la date de l'opération'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier l'opération</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/etat']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="recherche">
+  <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText" [(ngModel)]="searchText"
+    placeholder="Tapez votre recherche">
+</div>
+<table class="table" align = center>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Libellé</th>
+      <th scope="col">Actions sur l'état</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let etat of listEtats | filter:searchText">
+      <th scope="row">{{etat.id}}</th>
+      <td>{{etat.libelle}}</td>
+      <td><button type="button" [routerLink]="['/modifieretat', etat.id]" class="btn btn-warning"
+          name="boutonModif">Modifier</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" (click)="askfordel(etat.id,i)" class="btn btn-danger"
+          name="boutonDelete">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
+<div align="center">
+    <button type="button" [routerLink]="['/']" class="btn btn-primary">Retour à la racine</button>
+</div>

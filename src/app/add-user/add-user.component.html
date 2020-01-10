@@ -1,0 +1,46 @@
+<div align="center">
+    <div>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputLogin">Login :</label>
+                <input type="text" class="form-control" id="inputLogin" [(ngModel)]="nouveauUser.login"
+                    formControlName="login" [ngClass]="{'is-invalid': submitted && f.login.errors}">
+            </div>
+            <div *ngIf="submitted && f.login.errors">
+                <label class="error">Veuillez entrer votre login</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputMdp1">Mot de passe :</label>
+                <input type="password" class="form-control" id="inputMdp1" [(ngModel)]="mdp1"
+                    formControlName="mdp1" [ngClass]="{'is-invalid': submitted && f.mdp1.errors}">
+            </div>
+            <div *ngIf="submitted && f.mdp1.errors">
+                <label class="error">Veuillez entrer votre mot de passe</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputMdp2">Répeter le mot de passe :</label>
+                <input type="password" class="form-control" id="inputMdp2" [(ngModel)]="mdp2"
+                    formControlName="mdp2" [ngClass]="{'is-invalid': submitted && f.mdp2.errors}">
+            </div>
+            <div *ngIf="submitted && f.mdp2.errors">
+                <label class="error">Veuillez entrer votre mot de passe une seconde fois</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputEmail">E-mail :</label>
+                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="nouveauUser.email"
+                    formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}">
+            </div>
+            <div *ngIf="submitted && f.email.errors">
+                <label class="error">Veuillez entrer votre adresse e-mail</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit"
+                    class="btn btn-primary">S'enregistrer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/']" class="btn btn-primary">Retour à la page
+                    d'authentification</button>
+            </div>
+        </form>
+    </div>
+</div>

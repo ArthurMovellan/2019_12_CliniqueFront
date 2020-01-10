@@ -1,0 +1,32 @@
+<div class="recherche">
+  <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText" [(ngModel)]="searchText"
+    placeholder="Tapez votre recherche">
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Patient</th>
+      <th scope="col">Médecin</th>
+      <th scope="col">Salle</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions sur l'opération</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let operation of listOperations | filter:searchText">
+      <th scope="row">{{operation.id}}</th>
+      <td>{{operation.patient.prenom + " " + operation.patient.nom}}</td>
+      <td>{{operation.medecin.prenom + " " + operation.medecin.nom}}</td>
+      <td>{{operation.salle.type}}</td>
+      <td>{{operation.date}}</td>
+      <td><button type="button" [routerLink]="['/modifieroperation', operation.id]" class="btn btn-warning"
+          name="boutonModif">Modifier</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" (click)="askfordel(operation.id,i)" class="btn btn-danger"
+          name="boutonDelete">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
+<div align="center">
+    <button type="button" [routerLink]="['/']" class="btn btn-primary">Retour à la racine</button>
+</div>

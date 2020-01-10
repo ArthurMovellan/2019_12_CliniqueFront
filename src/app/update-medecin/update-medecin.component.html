@@ -1,0 +1,40 @@
+<div align="center">
+    <div>
+        <form [formGroup]="medecinForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="medecincourant.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer le nom du médecin</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputPrenom">Prénom :</label>
+                <input type="text" class="form-control" id="inputPrenom" [(ngModel)]="medecincourant.prenom"
+                    formControlName="prenom" [ngClass]="{'is-invalid': submitted && f.prenom.errors}">
+            </div>
+            <div *ngIf="submitted && f.prenom.errors">
+                <label class="error">Veuillez entrer le prénom du médecin</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputService">Service :</label>
+                <select class="form-control" id="inputService" [(ngModel)]="servicecourant.id" formControlName="service"
+                    [ngClass]="{'is-invalid': submitted && f.service.errors}">
+                    <option *ngFor="let service of listService" [ngValue]="service.id">
+                        {{service.nom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.service.errors">
+                <label class="error">Veuillez sélectionner le service du médecin'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier le médecin</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/etat']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>

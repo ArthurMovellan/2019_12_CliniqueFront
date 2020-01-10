@@ -1,0 +1,28 @@
+<div align="center">
+    <div>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputLogin">Login :</label>
+                <input type="text" class="form-control" id="inputLogin" [(ngModel)]="nouveauUser.login"
+                    formControlName="login" [ngClass]="{'is-invalid': submitted && f.login.errors}">
+            </div>
+            <div *ngIf="submitted && f.login.errors">
+                <label class="error">Veuillez entrer votre login</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputMdp">Mot de passe :</label>
+                <input type="password" class="form-control" id="inputMdp" [(ngModel)]="nouveauUser.motDePasse"
+                    formControlName="motDePasse" [ngClass]="{'is-invalid': submitted && f.motDePasse.errors}">
+            </div>
+            <div *ngIf="submitted && f.motDePasse.errors">
+                <label class="error">Veuillez entrer votre mot de passe</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Se connecter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/ajoutuser']" class="btn btn-primary">S'enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>

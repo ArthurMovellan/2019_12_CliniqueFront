@@ -1,0 +1,28 @@
+<div align="center">
+    <div>
+        <form [formGroup]="salleForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputNumero">Numéro :</label>
+                <input type="text" class="form-control" id="inputNumero" [(ngModel)]="nouveauSalle.numero"
+                    formControlName="numero" [ngClass]="{'is-invalid': submitted && f.numero.errors}">
+            </div>
+            <div *ngIf="submitted && f.numero.errors">
+                <label class="error">Veuillez entrer le numero de la salle</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputType">Type :</label>
+                <input type="text" class="form-control" id="inputType" [(ngModel)]="nouveauSalle.type"
+                    formControlName="type" [ngClass]="{'is-invalid': submitted && f.type.errors}">
+            </div>
+            <div *ngIf="submitted && f.type.errors">
+                <label class="error">Veuillez entrer le type de la salle</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Ajouter la salle</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/salle']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>

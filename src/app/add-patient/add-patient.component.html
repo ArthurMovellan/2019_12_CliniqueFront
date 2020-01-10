@@ -1,0 +1,48 @@
+<div align="center">
+    <div>
+        <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="nouveauPatient.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer le nom du patient</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputPrenom">Prénom :</label>
+                <input type="text" class="form-control" id="inputPrenom" [(ngModel)]="nouveauPatient.prenom"
+                    formControlName="prenom" [ngClass]="{'is-invalid': submitted && f.prenom.errors}">
+            </div>
+            <div *ngIf="submitted && f.prenom.errors">
+                <label class="error">Veuillez entrer le prénom du patient</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputDossierMedical">Dossier médical :</label>
+                <input type="text" class="form-control" id="inputDossierMedical" [(ngModel)]="nouveauPatient.dossierMedical"
+                    formControlName="dossierMedical" [ngClass]="{'is-invalid': submitted && f.dossierMedical.errors}">
+            </div>
+            <div *ngIf="submitted && f.dossierMedical.errors">
+                <label class="error">Veuillez entrer le dossier médical du patient</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputEtat">Etat :</label>
+                <select class="form-control" id="inputEtat" [(ngModel)]="nouveauEtat.id" formControlName="etat"
+                    [ngClass]="{'is-invalid': submitted && f.etat.errors}">
+                    <option *ngFor="let etat of listEtat" [ngValue]="etat.id">
+                        {{etat.libelle}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.etat.errors">
+                <label class="error">Veuillez sélectionner l'état du patient'</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Ajouter le patient</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/etat']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>

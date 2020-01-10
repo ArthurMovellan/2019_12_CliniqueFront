@@ -1,0 +1,47 @@
+<div class="fond">
+  <div id="carousel" class="carousel slide" data-ride="carousel" align=center data-interval="2000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/images/carouselPatient/vieille-contente.jpeg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/images/carouselPatient/jeunega.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/images/carouselPatient/cancereuse.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+  <div class="recherche">
+    <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText" [(ngModel)]="searchText"
+      placeholder="Tapez votre recherche">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Dossier médical</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Actions sur le patient</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of listPatients | filter:searchText">
+        <td>{{patient.id}}</td>
+        <td>{{patient.nom}}</td>
+        <td>{{patient.prenom}}</td>
+        <td>{{patient.dossierMedical}}</td>
+        <td>{{patient.etat.libelle}}</td>
+        <td><button type="button" [routerLink]="['/modifierpatient', patient.id]" class="btn btn-warning"
+            name="boutonModif">Modifier</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" (click)="askfordel(patient.id,i)" class="btn btn-danger"
+            name="boutonDelete">Supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div align=center>
+    <button type="button" [routerLink]="['/']" class="btn btn-primary">Retour à la racine</button>
+  </div>
+</div>

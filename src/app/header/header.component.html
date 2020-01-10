@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href=""><img class="logo" src="../../assets/images/logo.jpg"></a>
+
+  <div class="collapse navbar-collapse" class="menu" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarPatient" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Patients
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarPatient">
+          <a class="dropdown-item" [routerLink]="['ajoutpatient']">Ajouter un patient</a>
+          <a class="dropdown-item" [routerLink]="['patient']">Lister les patients</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarMedecin" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Médecins
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarMedecin">
+          <a class="dropdown-item" [routerLink]="['ajoutmedecin']">Ajouter un medecin</a>
+          <a class="dropdown-item" [routerLink]="['medecin']">Lister les medecins</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarOperation" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Opérations
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarOperation">
+          <a class="dropdown-item" [routerLink]="['ajoutoperation']">Ajouter une opération</a>
+          <a class="dropdown-item" [routerLink]="['operation']">Lister les opérations</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarService" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarService">
+          <a class="dropdown-item" [routerLink]="['ajoutservice']">Ajouter un service</a>
+          <a class="dropdown-item" [routerLink]="['service']">Lister les services</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarSalle" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Salles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarSalle">
+          <a class="dropdown-item" [routerLink]="['ajoutsalle']">Ajouter une salle</a>
+          <a class="dropdown-item" [routerLink]="['salle']">Lister les salles</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarEtat" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Etats
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarEtat">
+          <a class="dropdown-item" [routerLink]="['ajoutetat']">Ajouter un etat</a>
+          <a class="dropdown-item" [routerLink]="['etat']">Lister les etats</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divconnect">
+    <div *ngIf="connected">
+      <label class="error">Bienvenue {{user}}!</label>
+      <br>
+      <button type="button" (click)="logout()" class="btn btn-secondary" name="boutonDelete">Se déconnecter</button>
+    </div>
+    <div *ngIf="!connected">
+      <label class="error">Non connecté</label>
+    </div>
+  </div>
+</nav>
